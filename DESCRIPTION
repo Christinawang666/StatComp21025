@@ -1,0 +1,17 @@
+Package: pit
+Type: Package
+Title: Projection-based independence test
+Version: 1.0.1
+Date: 2021-11-17
+Author:  Tingyin Wang
+Maintainer: TingyinWang <christinawang666@mail.ustc.edu.cn>
+Description: Several R and Rcpp function are included in this package for illustration. 
+License: GPL (>= 2)
+Imports: Rcpp, RcppEigen
+LinkingTo: Rcpp, RcppEigen
+RoxygenNote: 7.1.1
+Encoding: UTF-8
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+URL: http://github.com/zhanghfd/StatComp
+BugReports: http://github.com/zhanghfd/StatComp/issues
