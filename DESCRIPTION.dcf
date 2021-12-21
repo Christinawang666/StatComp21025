@@ -11,4 +11,7 @@ Imports: Rcpp, RcppEigen
 LinkingTo: Rcpp, RcppEigen
 RoxygenNote: 7.1.1
 Encoding: UTF-8
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
+URL: http://github.com/Christinawang666/pit
+BugReports: http://github.com/Christinawang666/pit/issues
