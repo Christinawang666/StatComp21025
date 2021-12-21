@@ -87,31 +87,31 @@ We set the poisson parameter $\lambda=1,2,3$, the parameter of Gamma distributio
 ## Answer
 #### Exercise 5.4
 ```{r}
-library("rBeta2009")
-# number of samples we take
-n <- 10
-
-ecdf_beta <- function(n,x) {
-  # sampling
-  sp <- rbeta(n, 3, 3)
-  # compute Monte Carlo intergral
-  n0 <- length(which(sp < x))
-  return(n0/n)
-}
-
-# compute ecdf for some values
-res <- function(x){
-  return(c(ecdf_beta(n,x),pbeta(x,3,3)))
-}
-res(0.1)
-res(0.2)
-res(0.3)
-res(0.4)
-res(0.5)
-res(0.6)
-res(0.7)
-res(0.8)
-res(0.9)
+# library("rBeta2009")
+# # number of samples we take
+# n <- 10
+# 
+# ecdf_beta <- function(n,x) {
+#   # sampling
+#   sp <- rbeta(n, 3, 3)
+#   # compute Monte Carlo intergral
+#   n0 <- length(which(sp < x))
+#   return(n0/n)
+# }
+# 
+# # compute ecdf for some values
+# res <- function(x){
+#   return(c(ecdf_beta(n,x),pbeta(x,3,3)))
+# }
+# res(0.1)
+# res(0.2)
+# res(0.3)
+# res(0.4)
+# res(0.5)
+# res(0.6)
+# res(0.7)
+# res(0.8)
+# res(0.9)
 
 ```
 We can conclude from the result that the function we use to estimate $F(x)$ is indeed quite close to the true value of $F(x)$.
@@ -121,22 +121,22 @@ Since generating samples from a Rayleigh distribution, we simply take $g(\cdot)=
 
 The CDF of a Rayleigh random variable $X$ is $F(x)=1-\exp \left(-\frac{x^{2}}{2 \sigma^{2}}\right), \quad x \geq 0$,and so $F^{-1}(y)=\sigma \sqrt{-2 ln (1-y)}$.
 ```{r}
-library(extraDistr)
-n <- 10
-u <- runif(n/2, 0, 1)
-u_prime <- 1-u
-F_inverse <- function(x, sigma){
-  return(sigma * sqrt(-2 * log(1-x)))
-}
-x <- F_inverse(u,3)
-x_prime <- F_inverse(u_prime,3)
-stat1 <- (x+x_prime)/2
-
-u2 <- runif(n/2, 0, 1)
-x2 <- F_inverse(u2,3)
-stat2 <- (x+x2)/2
-
-(var(stat2)-var(stat1))/var(stat2)
+# library(extraDistr)
+# n <- 10
+# u <- runif(n/2, 0, 1)
+# u_prime <- 1-u
+# F_inverse <- function(x, sigma){
+#   return(sigma * sqrt(-2 * log(1-x)))
+# }
+# x <- F_inverse(u,3)
+# x_prime <- F_inverse(u_prime,3)
+# stat1 <- (x+x_prime)/2
+# 
+# u2 <- runif(n/2, 0, 1)
+# x2 <- F_inverse(u2,3)
+# stat2 <- (x+x2)/2
+# 
+# (var(stat2)-var(stat1))/var(stat2)
 
 ```
 In conclusion, the variance of statistic $\frac{X+X^{\prime}}{2}$ has reduced the variance of statistic $\frac{X_{1}+X_{2}}{2}$ by 96%.
@@ -504,44 +504,44 @@ The 95% percentile interval is (0.5399,0.7006); and the BCa interval is (0.5399,
 
 ## Exercise 7.B
 ```{r}
-library(moments)
-
-# simulation times
-mc_n <- 100
-bt_n <- 100
-sample_n <- 50
-
-# skewness function
-sk<-function(x,i){
-  skewness(x[i])
-}
-
-# ci
-ci_basic <- matrix(nrow=mc_n,ncol=2)
-
-
-# calculate the CI of N
-for (i in 1:mc_n) {
-  set.seed(i)
-   dt_norm<-rnorm(sample_n)
-  #de<-boot(data=dt_norm,statistic=sk,R=bt_n)
-  # ci<-boot.ci(de,type="basic")
-  # ci_basic[i,]<-ci$basic[4:5]
-}
-#ci_basic
-
-# ci
-ci_basic_c <- matrix(nrow=mc_n,ncol=2)
-
-
-# calculate the CI of N
-for (i in 1:mc_n) {
-  set.seed(i)
-  dt_c<-rchisq(sample_n,5)
+# library(moments)
+# 
+# # simulation times
+# mc_n <- 100
+# bt_n <- 100
+# sample_n <- 50
+# 
+# # skewness function
+# sk<-function(x,i){
+#   skewness(x[i])
+# }
+# 
+# # ci
+# ci_basic <- matrix(nrow=mc_n,ncol=2)
+# 
+# 
+# # calculate the CI of N
+# for (i in 1:mc_n) {
+#   set.seed(i)
+#    dt_norm<-rnorm(sample_n)
+#   #de<-boot(data=dt_norm,statistic=sk,R=bt_n)
+#   # ci<-boot.ci(de,type="basic")
+#   # ci_basic[i,]<-ci$basic[4:5]
+# }
+# #ci_basic
+# 
+# # ci
+# ci_basic_c <- matrix(nrow=mc_n,ncol=2)
+# 
+# 
+# # calculate the CI of N
+# for (i in 1:mc_n) {
+#   set.seed(i)
+#   dt_c<-rchisq(sample_n,5)
   #de<-boot(data=dt_c,statistic=sk,R=bt_n)
   # ci<-boot.ci(de,type="basic")
   # ci_basic_c[i,]<-ci$basic[4:5]
-}
+#}
 #ci_basic_c
 
 # calculate the coverage rates
@@ -550,6 +550,7 @@ for (i in 1:mc_n) {
 
 
 ```
+
 ## Answer 8.2
 ```{r}
 # data generation
